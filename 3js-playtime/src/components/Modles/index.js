@@ -1,22 +1,18 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, Suspense } from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-
+import Stand from '../Modles/stand' 
+import { useSpring, a } from 'react-spring/three'
+import { extend, useThree } from 'react-three-fiber';
 
 /*useSpring => react spring is cross platform, us spring alows for animations outside of react
  the component renders once and then animates, far more optimised
  a => (shortcut for animated)
 */
-import { useSpring, a } from 'react-spring/three'
-import { useFrame, extend, useThree, useLoader } from 'react-three-fiber';
-import { Primitive } from 'react-three-fiber/components'
-
-import stageURL from "./../../static/Imports/3D/scene.gltf";
 
 
-function Stand () {
+
+function MainScene () {
 
     const[hovered, setHover] = useState(false);
     const[active, setActive] = useState(false);
@@ -44,28 +40,6 @@ function Stand () {
         )
     }
 
-    function MainStand ()
-    {
-        const[geometry, setGeometry] = useState();
-        //const {size, viewport, gl, scene, camera, clock} = useThree();
-        //const gltf = useLoader(GLTFLoader, stageURL)
-
-        const mesh = new THREE.Mesh();
-        //const geometry = new THREE.SphereGeometry(3,16,16);
-
-        // useMemo(() => {
-        //     new GLTFLoader().load(stageURL, setGeometry)
-        // });
-        
-        return (
-            geometry ? null : null
-        )
-    }
-
-    //game loop
-    // useFrame(() => {
-    //     mesh.current.rotation.y += 0.005;
-    // });
 
     let degToRad = (value) =>{
         return value * (Math.PI/180) ;
@@ -79,7 +53,9 @@ function Stand () {
             <group
                 ref = {mesh}
             >
-                <MainStand/>
+                <Suspense fallback={null}>
+                    <Stand />
+                </Suspense>
                 <a.mesh
                     onPointerOver={() =>setHover(true)}
                     onPointerOut={() => setHover(false)}
@@ -114,4 +90,4 @@ function Stand () {
     )
 }
 
-export default Stand
+export default MainScene

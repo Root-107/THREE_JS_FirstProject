@@ -4,7 +4,7 @@ import './App.css';
 import { Canvas, extend } from "react-three-fiber";
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import Stand from "./components/Modles";
+import MainScene from "./components/Modles";
 import Ambient from "./components/Lights/ambinet.js";
 import SpotLight from "./components/Lights/spot.js"
 import Environemnt from "./components/Environemnt";
@@ -26,7 +26,7 @@ function App() {
                 gl.shadowMap.type = THREE.PCFSoftShadowMap;
             }}
         >
-            <Stand/>
+            <MainScene/>
             <Ambient/>
             <SpotLight pos={[-3,1,1]} shadows={true} fallOff={0.5} color={0x00aeff}/>
             <SpotLight pos={[3,2,-3]} shadows={true} fallOff={0.5} color={0xff9c00}/>
