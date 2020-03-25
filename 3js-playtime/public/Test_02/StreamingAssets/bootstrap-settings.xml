@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xml>
+	<version>
+		<major>0</major>
+		<minor>0</minor>
+		<patch>1</patch>
+		<build>1</build>
+	</version>
+
+	<build_quality_setting>Fantastic</build_quality_setting>
+
+	<window>
+		<name>_PROJECT_NAME_</name>
+		<x>0</x>
+		<y>0</y>
+		<width>1920</width>
+		<height>1080</height>
+	</window>
+	
+	<cursor_enabled>true</cursor_enabled>
+</xml>

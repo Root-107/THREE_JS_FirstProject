@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLoader, primitive } from 'react-three-fiber'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
 
 function Stand()
 {  
-    const {nodes , materials } = useLoader(GLTFLoader, '/scene.gltf');
+
+    const [model, setModel] = useState();
+    //const { nodes , materials } = useLoader(GLTFLoader, '/StandModel.gltf');
+
+    new OBJLoader2().load("/StandModel.obj", setModel);
+
 
     //console.log(nodes)
-
+    //console.log(model)
     return(
         <group name="data">
+            {/* {model ? <primitive object={model} size={[0.01,0.01,0.01]}>
+            <meshPhysicalMaterial
+                    attach="material"
+                    color={"red"}
+                    roughness={0.2}
+                    metalness={0.7}
+                />
+            </primitive> : null} */}
+            {model ?
             <mesh
-                geometry={nodes.Mesh_Mesh_head_geo001_lambert2SG001.geometry}
-                scale={[0.05,0.05,0.05]}
+                geometry={model.children[0].geometry}
+                scale={[0.1,0.1,0.1]}
+                smooth ={[1]}
             >
                 <meshPhysicalMaterial
                     attach="material"
@@ -20,9 +36,8 @@ function Stand()
                     roughness={0.2}
                     metalness={0.7}
                 /> 
-            </mesh>
+            </mesh> : null}
         </group>
-        //<primitive object={nodes.mesh}/>
     )
 }
 

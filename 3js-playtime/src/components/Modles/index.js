@@ -1,7 +1,6 @@
 import React, { useState, useRef, Suspense } from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import Stand from '../Modles/stand' 
 import { useSpring, a } from 'react-spring/three'
 import { extend, useThree } from 'react-three-fiber';
 
@@ -53,9 +52,6 @@ function MainScene () {
             <group
                 ref = {mesh}
             >
-                <Suspense fallback={null}>
-                    <Stand />
-                </Suspense>
                 <a.mesh
                     onPointerOver={() =>setHover(true)}
                     onPointerOut={() => setHover(false)}
