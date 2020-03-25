@@ -53,9 +53,6 @@ function MainScene () {
             <group
                 ref = {mesh}
             >
-                <Suspense fallback={null}>
-                    <Stand />
-                </Suspense>
                 <a.mesh
                     onPointerOver={() =>setHover(true)}
                     onPointerOut={() => setHover(false)}
