@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { useLoader, primitive } from 'react-three-fiber'
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
 
-function Stand()
+function StandBase(props)
 {  
-    //const {nodes , materials } = useLoader(OBJLoader2, '/scene.gltf');
     const [model, setModel] = useState();
-    
+
     const loader = new OBJLoader2();
-    loader.load("/StandModel.obj", setModel);
+    loader.load(props.model_src, setModel);
 
     return(
         <group name="data">
@@ -18,8 +16,8 @@ function Stand()
             >
                 <meshPhysicalMaterial
                     attach="material"
-                    color={"grey"}
-                    roughness={0.2}
+                    color={"white"}
+                    roughness={1}
                     metalness={0.7}
                 /> 
             </mesh> : null}
@@ -27,4 +25,4 @@ function Stand()
     )
 }
 
-export default Stand
+export default StandBase

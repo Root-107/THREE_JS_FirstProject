@@ -2,6 +2,6 @@ import React from 'react';
 
 export default ()=>{
     return (
-        <ambientLight intensity={0.5} color={0xffffff}/>
+        <ambientLight intensity={1} color={0xffffff}/>
     )
 };

@@ -1,7 +1,7 @@
 import React, { useState, useRef, Suspense } from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import Stand from '../Modles/stand' 
+import Stand from './glow_rings' 
 import { useSpring, a } from 'react-spring/three'
 import { extend, useThree } from 'react-three-fiber';
 
@@ -50,7 +50,7 @@ function MainScene () {
     return (
         <>
         <Controls />
-            <group
+            {/* <group
                 ref = {mesh}
             >
                 <a.mesh
@@ -82,7 +82,7 @@ function MainScene () {
                         metalness={0.7}
                     />
                 </mesh>
-            </group>
+            </group> */}
         </>
     )
 }

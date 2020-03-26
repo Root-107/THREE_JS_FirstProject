@@ -9,7 +9,9 @@ import Ambient from "./components/Lights/ambinet.js";
 import SpotLight from "./components/Lights/spot.js"
 import Environemnt from "./components/Environemnt";
 import PointLight from './components/Lights/point.js';
-import Stand from '../src/components/Modles/stand'
+import GlowRings from './components/Modles/glow_rings';
+import StandBase from './components/Modles/stand_base';
+import Booth from './components/Modles/booth';
 
 /**
  * inside the canvas to add fog
@@ -28,12 +30,16 @@ function App() {
             }}
         >
             <Suspense fallback={null}>
-                <Stand />
+                <StandBase model_src="/StandExportOBJ/Structure.obj" />
+                <GlowRings model_src="/StandExportOBJ/GlowRings.obj" />
+                <Booth model_src="/StandExportOBJ/Booth.obj" position={[-4,0,-5]}/>
+                <Booth model_src="/StandExportOBJ/Booth.obj" position={[0,0,-5]}/>
+                <Booth model_src="/StandExportOBJ/Booth.obj" position={[4,0,-5]}/>
             </Suspense>
+
             <MainScene/>
             <Ambient/>
-            <SpotLight pos={[-3,1,1]} shadows={true} fallOff={0.5} color={0x00aeff}/>
-            <SpotLight pos={[3,2,-3]} shadows={true} fallOff={0.5} color={0xff9c00}/>
+            <PointLight />
            <Environemnt/>
         </Canvas>
     );
