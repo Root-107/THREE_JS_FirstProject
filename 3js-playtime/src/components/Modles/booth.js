@@ -69,7 +69,7 @@ function Booth(props)
         <group name="table" position={props.position}>
             {model ? model.children.map((child, i)=>{
                 return (
-                    <Item geometry={child.geometry} {...materialData[i]} />
+                    <Item key={i} geometry={child.geometry} {...materialData[i]} />
                 )
             }) : null}
         </group>

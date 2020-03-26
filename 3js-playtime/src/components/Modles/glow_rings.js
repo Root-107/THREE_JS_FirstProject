@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLoader, primitive } from 'react-three-fiber'
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
+import Effect from '../Post/effects'
 
 function GlowRings(props)
 {  
@@ -37,6 +38,7 @@ function GlowRings(props)
     function Ring (child_props){
         return(
             <mesh
+            layers={props.render_layer}
             geometry={child_props.geometry}
             scale={[0.05,0.05,0.05]}
         >
@@ -51,7 +53,7 @@ function GlowRings(props)
         <group position={[0,5,0]}>
             {model ? model.children.map((child, i)=>{
                 return (
-                    <Ring geometry={child.geometry} {...ringData[i]} />
+                    <Ring key={i} geometry={child.geometry} {...ringData[i]} />
                 )
             }) : null}
         </group>
