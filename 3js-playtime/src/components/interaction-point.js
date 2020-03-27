@@ -45,14 +45,14 @@ function StandScreen(props)
             onClick={() => HandleOnClick()}
         >
             <planeBufferGeometry attach="geometry" args={[10,10]} />
-            <a.meshStandardMaterial
+            <meshStandardMaterial
                 attach="material"
                 transparent={true}
                 map={texture}
                 side={DoubleSide}
             >
                 <texture attach="map"/>
-            </a.meshStandardMaterial>
+            </meshStandardMaterial>
         </a.mesh>
     )
 }

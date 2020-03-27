@@ -79,7 +79,6 @@ function Scene()
                 <InteractionPoint position={[3,2,8]} setCamTarget={setCamTarget}/>
             </Suspense>
 
-            <MainScene/>
             <Effect/>
             <Ambient/>
             <PointLight/>

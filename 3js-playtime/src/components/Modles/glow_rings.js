@@ -5,10 +5,7 @@ import Effect from '../Post/effects'
 
 function GlowRings(props)
 {  
-    const [model, setModel] = useState();
-
-    const loader = new OBJLoader2();
-    loader.load(props.model_src, setModel);
+    const loader = useLoader(OBJLoader2, props.model_src);
 
     const ringData = [
         {
@@ -51,7 +48,7 @@ function GlowRings(props)
 
     return(
         <group position={[0,5,0]}>
-            {model ? model.children.map((child, i)=>{
+            {loader ? loader.children.map((child, i)=>{
                 return (
                     <Ring key={i} geometry={child.geometry} {...ringData[i]} />
                 )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
+import { useLoader } from 'react-three-fiber';
 
 
 function StandScreen(props)
@@ -9,8 +10,7 @@ function StandScreen(props)
     const[hovered, setHover] = useState(false);
     const[active, setActive] = useState(false);
 
-    const loader = new OBJLoader2();
-    loader.load(props.model_src, setModel);
+    const loader = useLoader(OBJLoader2, props.model_src)
 
     function Mesh (child_props){
         return(
@@ -33,7 +33,7 @@ function StandScreen(props)
 
     return(
     <group position={props.position} rotation={props.rotation}>
-            {model ? model.children.map((child, i)=>{
+            {loader ? loader.children.map((child, i)=>{
                 return (
                     <Mesh key={i} geometry={child.geometry} />
                 )

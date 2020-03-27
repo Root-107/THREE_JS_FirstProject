@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
 import { DoubleSide } from 'three';
+import { useLoader } from 'react-three-fiber';
 
 function Booth(props) 
 {
-    const [model, setModel] = useState();
-
-    const loader = new OBJLoader2();
-    loader.load(props.model_src, setModel);
+    const loader = useLoader(OBJLoader2, props.model_src);
 
     const materialData = [
         {
@@ -61,7 +59,7 @@ function Booth(props)
 
     return(
         <group name="table" position={props.position}>
-            {model ? model.children.map((child, i)=>{
+            {loader ? loader.children.map((child, i)=>{
                 return (
                     <Item key={i} geometry={child.geometry} {...materialData[i]} />
                 )

@@ -7,6 +7,7 @@ import Scene from './components/scene';
  */
 import { Canvas, extend, useThree, render, useFrame } from "react-three-fiber";
 import * as THREE from 'three';
+import MainScene from './components/Modles';
 
 
 function App() {
@@ -22,8 +23,9 @@ function App() {
             }}
             
         >
-        <fog attach="fog" args={["grey", 25, 190]} />
-        <Scene />
+            <fog attach="fog" args={["grey", 25, 190]} />
+            <Scene />
+            <MainScene />
         </Canvas>
     );
 }
