@@ -23,7 +23,7 @@ function StandScreen(props)
     function HandleOnClick()
     {
         setActive(!active);
-        props.setCam(targetPos)
+        props.setCamTarget(targetPos)
     }
 
     useFrame(()=>{

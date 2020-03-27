@@ -54,14 +54,7 @@ extend({OrbitControls, RenderPass});
 
 function Scene()
 {
-    const camtarget = new THREE.Vector3(0,0,0);
-
-    function SetCameraTarget(x,y,z)
-    {
-        camtarget = new THREE.Vector3(x,y,z);
-    }
-
-
+    const [camtarget, setCamTarget] = useState(new THREE.Vector3(0,0,0));
 
     useFrame(({gl, scene, camera})=>{
         camera.lookAt(camtarget);
@@ -81,9 +74,9 @@ function Scene()
                 <StandScreen model_src="/StandExportOBJ/StandScreen.obj" position={[-4,0.1,10]} rotation={[0, 0.5, 0]}/>
                 <StandScreen model_src="/StandExportOBJ/StandScreen.obj" position={[-8,0.1,7]} rotation={[0, 0.2, 0]}/>
                 <StandScreen model_src="/StandExportOBJ/StandScreen.obj" position={[-4,0.1,5]} rotation={[0, 1, 0]}/>
-                <InteractionPoint position={[-4,1,7]}/>
-                <InteractionPoint position={[0,2,-3]}/>
-                <InteractionPoint position={[3,2,8]}/>
+                <InteractionPoint position={[-4,1,7]} setCamTarget={setCamTarget}/>
+                <InteractionPoint position={[0,2,-3]} setCamTarget={setCamTarget}/>
+                <InteractionPoint position={[3,2,8]} setCamTarget={setCamTarget}/>
             </Suspense>
 
             <MainScene/>
