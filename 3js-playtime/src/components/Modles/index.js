@@ -41,12 +41,6 @@ function MainScene () {
     }
 
 
-    let degToRad = (value) =>{
-        return value * (Math.PI/180) ;
-    }
-
-    var planeRot = new THREE.Euler(degToRad(-90), degToRad(0), degToRad(0), 'XYZ');
-
     return (
         <>
         <Controls />

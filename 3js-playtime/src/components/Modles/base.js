@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
 
-function StandBase(props)
-{  
+function Base(props)
+{
     const [model, setModel] = useState();
 
     const loader = new OBJLoader2();
@@ -12,8 +12,7 @@ function StandBase(props)
         <group name="data">
             {model ? <mesh
                 geometry={model.children[0].geometry}
-                scale={[0.05,0.05,0.05]}
-                receiveShadow
+                scale={[0.04,0.04,0.04]}
             >
                 <meshPhysicalMaterial
                     attach="material"
@@ -26,4 +25,6 @@ function StandBase(props)
     )
 }
 
-export default StandBase
+
+
+export default Base

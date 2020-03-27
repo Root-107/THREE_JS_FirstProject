@@ -11,42 +11,42 @@ function Booth(props)
     const materialData = [
         {
             attach:"material",
-            color:"grey",
-            roughness:0.2,
+            color:"white",
+            roughness:1,
             metalness:0.7
  
         },
         {
             attach:"material",
-            color:"grey",
-            roughness:0.2,
+            color:"white",
+            roughness:1,
             metalness:0.7
         },
         {
             attach:"material",
-            color:"grey",
+            color:"white",
             emissive:0xffffff,
-            roughness:0.2,
+            roughness:1,
             metalness:0.7
         },
         {
             attach:"material",
-            color:"grey",
-            roughness:0.2,
+            color:"white",
+            roughness:1,
             metalness:0.7
         },
         {
             attach:"material",
-            color:"grey",
+            color:"white",
             emissive:0x7ce0fe,
-            roughness:0.2,
+            roughness:1,
             metalness:0.7
         },
         {
             attach:"material",
-            color:"grey",
+            color:"white",
             emissive:0xffffff,
-            roughness:0.2,
+            roughness:1,
             metalness:0.7
         }
     ]
@@ -55,9 +55,10 @@ function Booth(props)
     {
         return(
             <mesh
-            geometry={child_props.geometry}
-            scale={[0.05,0.05,0.05]}
-        >
+                geometry={child_props.geometry}
+                scale={[0.07,0.07,0.07]}
+                castShadow
+            >
             <meshPhysicalMaterial
                 {...child_props}
             /> 
