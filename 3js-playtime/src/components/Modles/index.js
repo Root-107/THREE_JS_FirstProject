@@ -1,4 +1,4 @@
-import React, { useState, useRef, Suspense } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import Stand from './glow_rings' 
@@ -10,23 +10,13 @@ import { extend, useThree } from 'react-three-fiber';
  a => (shortcut for animated)
 */
 
-
-
-function MainScene () {
+function MainScene (props) {
 
     const[hovered, setHover] = useState(false);
     const[active, setActive] = useState(false);
-
-    const mesh = useRef();
     const orbitRef = useRef();
-
-    //React spring can turn static values in to values that animate by tehmselves
-    const props = useSpring({
-        scale: active? [1.5,1.5,1.5] : [1,1,1],
-        color: hovered? "hotpink" : "grey"
-    })
-
-    extend({OrbitControls});
+    
+    props.setController(orbitRef)
 
     const Controls = () => {
         const {camera, gl} = useThree();
@@ -42,33 +32,7 @@ function MainScene () {
 
 
     return (
-        <>
-        <Controls />
-            {/* <group
-                ref = {mesh}
-            >
-                <a.mesh
-                    onPointerOver={() =>setHover(true)}
-                    onPointerOut={() => setHover(false)}
-                    onClick={() => setActive(!active)}
-                    scale={props.scale}
-                    castShadow
-                >
-                    <boxBufferGeometry
-                        attach="geometry"
-                        args={[1,1,1]}
-                        scale ={props.scale}
-                        
-                    />
-                    <a.meshPhysicalMaterial
-                        attach="material"
-                        color={props.color}
-                        roughness={0.1}
-                        metalness={0.3}
-                    />
-                </a.mesh>
-            </group> */}
-        </>
+        <Controls/>
     )
 }
 

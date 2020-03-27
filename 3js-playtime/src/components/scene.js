@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect, useRef } from 'react';
+import React, { Suspense, useState, useEffect, useRef, useContext } from 'react';
 
 /**
  * Three and fiber imports
@@ -25,8 +25,9 @@ import Base from './Modles/base';
 import InfoDesk from './Modles/info-desk';
 import StandScreen from './Modles/stand-screen';
 import InteractionPoint from './interaction-point';
-
 import Effect from './Post/effects';
+
+import { OrbitControllerContext } from '../context/OrbitControllerContext'
 
 /**
  * inside the canvas to add fog
@@ -40,8 +41,6 @@ let degToRad = (value) =>{
 
 extend({OrbitControls, RenderPass});
 
-
-
 // function Camera(props)
 // {
 //     const ref = useRef();
@@ -52,12 +51,17 @@ extend({OrbitControls, RenderPass});
 //     return(<perspectiveCamera ref={ref} position={props.position}/>)
 // }
 
-function Scene()
+function Scene(props)
 {
     const [camtarget, setCamTarget] = useState(new THREE.Vector3(0,0,0));
 
+    if (props.controller) {
+        console.log(props.controller.current)
+    }
+
     useFrame(({gl, scene, camera})=>{
         camera.lookAt(camtarget);
+        props.controller.current.target.set(camtarget.x, camtarget.y, camtarget.z)
         gl.render(scene, camera);
     }, 1)
 

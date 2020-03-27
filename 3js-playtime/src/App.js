@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Scene from './components/scene';
 
@@ -11,6 +11,8 @@ import MainScene from './components/Modles';
 
 
 function App() {
+    const [controller, setController] = useState()
+
     return (
         <Canvas 
             shadowMap
@@ -24,8 +26,8 @@ function App() {
             
         >
             <fog attach="fog" args={["grey", 25, 190]} />
-            <Scene />
-            <MainScene />
+            <MainScene controller={controller} setController={setController}  />
+            <Scene controller={controller} setController={setController} />
         </Canvas>
     );
 }
