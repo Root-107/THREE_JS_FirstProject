@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useState, useEffect, useRef } from 'react';
 import './App.css';
 
 /**
@@ -41,23 +41,35 @@ let degToRad = (value) =>{
 
 extend({OrbitControls, RenderPass});
 
+
+
+// function Camera(props)
+// {
+//     const ref = useRef();
+//     const { set } = useThree
+
+//     useEffect(()=> void setDefaultCamera(ref.current), [])
+//     useFrame(() => ref.current.updateMatrixWorld())
+//     return(<perspectiveCamera ref={ref} position={props.position}/>)
+// }
+
 function App() {
+    const [cameraSettings, setCamera] = useState([10,3,20]);
+    const [cameraTarget, setCameraTarget] = useState([0,0,0]);
 
     return (
         <Canvas 
             shadowMap
-            camera={{position:[10,3,20]}} 
             onCreated={({ gl }) => {
-                gl.shadowMap.enabled = true
+                gl.shadowMap.enabled = true;
                 gl.shadowMap.type = THREE.PCFSoftShadowMap;
-            }}
-            onCreated={({ gl }) => {
                 gl.toneMapping = THREE.Uncharted2ToneMapping
                 gl.setClearColor(new THREE.Color('#020207'))
-              }}>
+            }}
+            
         >
             <fog attach="fog" args={["grey", 25, 190]} />
-
+            {/* <Camera position={cameraSettings} /> */}
             <Suspense fallback={null}>
                 <StandBase model_src="/StandExportOBJ/Structure.obj" />
                 <GlowRings model_src="/StandExportOBJ/GlowRings.obj" />
@@ -69,9 +81,9 @@ function App() {
                 <StandScreen model_src="/StandExportOBJ/StandScreen.obj" position={[-4,0.1,10]} rotation={[0, 0.5, 0]}/>
                 <StandScreen model_src="/StandExportOBJ/StandScreen.obj" position={[-8,0.1,7]} rotation={[0, 0.2, 0]}/>
                 <StandScreen model_src="/StandExportOBJ/StandScreen.obj" position={[-4,0.1,5]} rotation={[0, 1, 0]}/>
+                <InteractionPoint position={[-4,1,7]}/>
             </Suspense>
             
-            <InteractionPoint position={[-4,1,7]} />
             <MainScene/>
             <Effect/>
             <Ambient/>

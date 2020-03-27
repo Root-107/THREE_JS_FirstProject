@@ -23,6 +23,7 @@ function StandScreen(props)
             <meshPhysicalMaterial
                 attach="material"
                 color={"white"}
+                flatShading={true}
                 roughness={1}
                 metalness={0.7}
             /> 

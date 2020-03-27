@@ -67,15 +67,6 @@ function MainScene () {
                         metalness={0.3}
                     />
                 </a.mesh>
-                <mesh position={[0, -1, 0]} rotation={planeRot} receiveShadow >
-                    <planeBufferGeometry attach="geometry" args={[10,10]} />
-                    <a.meshPhysicalMaterial
-                        attach="material"
-                        color={"grey"}
-                        roughness={0.2}
-                        metalness={0.7}
-                    />
-                </mesh>
             </group> */}
         </>
     )

@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
 import { useSpring, a } from 'react-spring/three'
+import { TextureLoader, Texture, DoubleSide } from 'three';
+import { useThree } from 'react-three-fiber';
 
 
 function StandScreen(props)
 {
-    const [model, setModel] = useState();
+    const {camera} = useThree();
+    const meshPos = useRef();
+
+    const [texture, setTexture] = useState();
 
     const[hovered, setHover] = useState(false);
     const[active, setActive] = useState(false);
 
-    const loader = new OBJLoader2();
-    loader.load(props.model_src, setModel);
+    const textureLoader = new TextureLoader();
+
+    textureLoader.load("/Textures/HotspotTexture.png", setTexture);
+
+    function HandleOnClick()
+    {
+        setActive(!active);
+        //props.setCam(props.position);
+    }
 
     const hoverData = useSpring({
-        scale: active? [0.2,0.2,0.2] : [0.1,0.1,0.1],
-        color: hovered? "hotpink" : "grey"
+        scale: active? [0,0,0] : hovered? [0.15,0.15,0.15] : [0.1,0.1,0.1],
     })
 
     return(
@@ -24,15 +35,17 @@ function StandScreen(props)
             scale={hoverData.scale}
             onPointerOver={() =>setHover(true)}
             onPointerOut={() => setHover(false)}
-            onClick={() => setActive(!active)}
+            onClick={() => HandleOnClick()}
         >
             <planeBufferGeometry attach="geometry" args={[10,10]} />
-            <a.meshBasicMaterial
+            <a.meshStandardMaterial
                 attach="material"
-                color={hoverData.color}
-                roughness={0.2}
-                metalness={0.7}
-            />
+                transparent={true}
+                map={texture}
+                side={DoubleSide}
+            >
+                <texture attach="map"/>
+            </a.meshStandardMaterial>
         </a.mesh>
     )
 }

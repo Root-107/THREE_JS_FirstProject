@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
+import { DoubleSide } from 'three';
 
 function Booth(props) 
 {
@@ -25,7 +26,6 @@ function Booth(props)
         {
             attach:"material",
             color:"white",
-            emissive:0xffffff,
             roughness:1,
             metalness:0.7
         },
@@ -36,16 +36,9 @@ function Booth(props)
             metalness:0.7
         },
         {
+            side:DoubleSide,
             attach:"material",
             color:"white",
-            emissive:0x7ce0fe,
-            roughness:1,
-            metalness:0.7
-        },
-        {
-            attach:"material",
-            color:"white",
-            emissive:0xffffff,
             roughness:1,
             metalness:0.7
         }
