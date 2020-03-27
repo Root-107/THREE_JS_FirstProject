@@ -54,12 +54,10 @@ extend({OrbitControls, RenderPass});
 // }
 
 function App() {
-    const [cameraSettings, setCamera] = useState([10,3,20]);
-    const [cameraTarget, setCameraTarget] = useState([0,0,0]);
-
     return (
         <Canvas 
             shadowMap
+            camera={{position:[10,3,20]}}
             onCreated={({ gl }) => {
                 gl.shadowMap.enabled = true;
                 gl.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -69,7 +67,6 @@ function App() {
             
         >
             <fog attach="fog" args={["grey", 25, 190]} />
-            {/* <Camera position={cameraSettings} /> */}
             <Suspense fallback={null}>
                 <StandBase model_src="/StandExportOBJ/Structure.obj" />
                 <GlowRings model_src="/StandExportOBJ/GlowRings.obj" />
