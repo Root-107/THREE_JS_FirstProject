@@ -16,7 +16,7 @@ function InfoDesk(props)
             scale={[0.06,0.06,0.06]}
             castShadow
         >
-            <meshPhysicalMaterial
+            <meshStandardMaterial
                 attach="material"
                 color={"white"}
                 roughness={1}

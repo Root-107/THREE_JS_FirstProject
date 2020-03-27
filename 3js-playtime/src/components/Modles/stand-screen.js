@@ -20,7 +20,7 @@ function StandScreen(props)
             scale={[0.1,0.1,0.1]}
             castShadow
         >
-            <meshPhysicalMaterial
+            <meshStandardMaterial
                 attach="material"
                 color={"white"}
                 flatShading={true}

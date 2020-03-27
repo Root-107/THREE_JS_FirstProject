@@ -15,7 +15,7 @@ function StandBase(props)
                 scale={[0.05,0.05,0.05]}
                 receiveShadow
             >
-                <meshPhysicalMaterial
+                <meshStandardMaterial
                     attach="material"
                     color={"white"}
                     roughness={1}

@@ -52,7 +52,7 @@ function Booth(props)
                 scale={[0.07,0.07,0.07]}
                 castShadow
             >
-            <meshPhysicalMaterial
+            <meshStandardMaterial
                 {...child_props}
             /> 
         </mesh>
