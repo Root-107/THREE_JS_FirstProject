@@ -5,11 +5,6 @@ import { useLoader } from 'react-three-fiber';
 
 function StandScreen(props)
 {
-    const [model, setModel] = useState();
-
-    const[hovered, setHover] = useState(false);
-    const[active, setActive] = useState(false);
-
     const loader = useLoader(OBJLoader2, props.model_src)
 
     function Mesh (child_props){

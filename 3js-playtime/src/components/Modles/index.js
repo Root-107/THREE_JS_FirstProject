@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import Stand from './glow_rings' 
+import Stand from './GlowRings' 
 import { useSpring, a } from 'react-spring/three'
 import { extend, useThree } from 'react-three-fiber';
 
@@ -10,10 +10,8 @@ import { extend, useThree } from 'react-three-fiber';
  a => (shortcut for animated)
 */
 
-function MainScene (props) {
-
-    const[hovered, setHover] = useState(false);
-    const[active, setActive] = useState(false);
+function Controller (props) {
+    
     const orbitRef = useRef();
     
     props.setController(orbitRef)
@@ -36,4 +34,4 @@ function MainScene (props) {
     )
 }
 
-export default MainScene
+export default Controller

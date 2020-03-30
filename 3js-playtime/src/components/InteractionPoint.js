@@ -18,21 +18,24 @@ function StandScreen(props)
     const textureLoader = new TextureLoader();
     textureLoader.load("/Textures/HotspotTexture.png", setTexture);
 
-    const targetPos = new THREE.Vector3(props.position[0], props.position[1], props.position[2])
+    const camTarget =  [props.position[0], props.position[1], props.position[2]];
+    const camPos = [props.cameraPos[0], props.cameraPos[1], props.cameraPos[2]];
 
     function HandleOnClick()
     {
+        props.setTargetPos({position: camTarget})
+        props.setCamPos({position: camPos})
         setActive(!active);
-        props.setCamTarget(targetPos)
     }
+
+    const camTargetPos = useSpring({position:camTarget});
 
     useFrame(()=>{
         item.current.lookAt(camera.position)
     }, 1)
 
-
     const hoverData = useSpring({
-        scale: active? [0.001,0.001,0.001] : hovered? [0.15,0.15,0.15] : [0.1,0.1,0.1],
+        scale: active? [0.0001,0.0001,0.0001] : hovered? [0.05,0.05,0.05] : [0.06,0.06,0.06],
     })
 
     return(

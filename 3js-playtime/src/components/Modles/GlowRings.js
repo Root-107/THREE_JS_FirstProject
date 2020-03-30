@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useLoader, primitive } from 'react-three-fiber'
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2"
-import Effect from '../Post/effects'
+import Effect from '../Post/Effects'
 
 function GlowRings(props)
 {  
