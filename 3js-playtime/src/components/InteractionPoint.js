@@ -6,14 +6,13 @@ import { useThree, useFrame } from 'react-three-fiber';
 import * as THREE from 'three'
 
 
-function StandScreen(props)
+function IntertactionPoint(props)
 {
     const item = useRef();
     const {camera} = useThree();
     const [texture, setTexture] = useState();
 
     const[hovered, setHover] = useState(false);
-    const[active, setActive] = useState(false);
 
     const textureLoader = new TextureLoader();
     textureLoader.load("/Textures/HotspotTexture.png", setTexture);
@@ -25,17 +24,16 @@ function StandScreen(props)
     {
         props.setTargetPos({position: camTarget})
         props.setCamPos({position: camPos})
-        setActive(!active);
+        props.setActive(props.name)
+        props.setControlState(false);
     }
-
-    const camTargetPos = useSpring({position:camTarget});
 
     useFrame(()=>{
         item.current.lookAt(camera.position)
     }, 1)
 
     const hoverData = useSpring({
-        scale: active? [0.0001,0.0001,0.0001] : hovered? [0.05,0.05,0.05] : [0.06,0.06,0.06],
+        scale: props.active === props.name? [0.0001,0.0001,0.0001] : hovered? [0.05,0.05,0.05] : [0.06,0.06,0.06],
     })
 
     return(
@@ -60,4 +58,4 @@ function StandScreen(props)
     )
 }
 
-export default StandScreen
+export default IntertactionPoint

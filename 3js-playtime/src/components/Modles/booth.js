@@ -47,7 +47,7 @@ function Booth(props)
         return(
             <mesh
                 geometry={child_props.geometry}
-                scale={[0.07,0.07,0.07]}
+                scale={[0.06,0.06,0.06]}
                 castShadow
             >
             <meshStandardMaterial

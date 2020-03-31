@@ -17,8 +17,9 @@ Alpha Textures - DONE
 Add Orbit controller - DONE
 Create look at points - DONE
 
-Create camera move to points - TODO
-Camera animations - TODO
+reset point - TODO
+Create camera move to points - DONE
+Camera animations - DONE
 Import materials - TODO
 LOD groups - TODO
 Texturing (PBR Maps) and other properties - TODO
@@ -31,6 +32,9 @@ Custome Shaders - TODO
 function App() {
     const [controller, setController] = useState()
 
+    //reset -> called from above
+    //pass a prop of url
+    
     return (
         <Canvas 
             shadowMap
